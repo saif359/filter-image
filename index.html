@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فلاتر إبن بدر</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>فلاتر إبن بدر</h1>
+        <input type="file" id="upload" accept="image/*" placeholder="إختر الصورة">
+        <div class="image-container">
+            <img id="image" src="" alt="الصورة">
+        </div>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Grechen+Fuemen&family=Oswald:wght@200..700&family=Shafarik&family=Sigmar&display=swap" rel="stylesheet">
+        <div class="filters">
+            <button onclick="applyFilter('none')">بدون فلتر</button>
+            <button onclick="applyFilter('grayscale')">تدرج رمادي</button>
+            <button onclick="applyFilter('sepia')">سيبيا</button>
+            <button onclick="applyFilter('blur')">ضبابي</button>
+            <button onclick="applyFilter('brightness')">سطوع</button>
+            <button onclick="applyFilter('contrast')">تباين</button>
+            <button onclick="applyFilter('hue-rotate')">تدوير اللون</button>
+            <button onclick="applyFilter('saturate')">تشبع</button>
+            <button onclick="applyFilter('invert')">عكسي</button>
+            <button onclick="applyFilter('opacity')">شفافية</button>
+            <button onclick="applyFilter('drop-shadow')">ظل</button>
+            <button onclick="applyFilter('grayscale-brightness')">تدرج رمادي + سطوع</button>
+            <button onclick="applyFilter('sepia-blur')">سيبيا + ضبابي</button>
+            <button onclick="applyFilter('contrast-saturate')">تباين + تشبع</button>
+            <button onclick="applyFilter('hue-rotate-blur')">تدوير اللون + ضبابي</button>
+            <button onclick="applyFilter('invert-opacity')">عكسي + شفافية</button>
+            <button onclick="applyFilter('sepia-invert')">سيبيا + عكسي</button>
+            <button onclick="applyFilter('brightness-contrast')">سطوع + تباين</button>
+            <button onclick="applyFilter('saturate-blur')">تشبع + ضبابي</button>
+            <button onclick="applyFilter('hue-rotate-saturate')">تدوير اللون + تشبع</button>
+            <!-- الفلاتر الجديدة -->
+            <button onclick="applyFilter('vintage')">فينتاج</button>
+            <button onclick="applyFilter('cool')">بارد</button>
+            <button onclick="applyFilter('warm')">دافئ</button>
+            <button onclick="applyFilter('clarendon')">كلاريندون</button>
+            <button onclick="applyFilter('gingham')">جينغهام</button>
+            <button onclick="applyFilter('moon')">قمر</button>
+            <button onclick="applyFilter('lark')">لارك</button>
+            <button onclick="applyFilter('reyes')">رييس</button>
+            <button onclick="applyFilter('juno')">جونو</button>
+            <button onclick="applyFilter('slumber')">نوم</button>
+            <button onclick="applyFilter('aden')">آدن</button>
+            <button onclick="applyFilter('perpetua')">بيربيتوا</button>
+            <button onclick="applyFilter('amaro')">أمارو</button>
+            <button onclick="applyFilter('mayfair')">مايفير</button>
+            <button onclick="applyFilter('rise')">رايز</button>
+            <button onclick="applyFilter('hudson')">هادسون</button>
+            <button onclick="applyFilter('valencia')">فالنسيا</button>
+            <button onclick="applyFilter('xpro2')">X-Pro II</button>
+            <button onclick="applyFilter('willow')">ويلو</button>
+            <button onclick="applyFilter('lofi')">لوفي</button>
+            <button onclick="applyFilter('inkwell')">إنك ويل</button>
+            <button onclick="applyFilter('hefe')">هيفي</button>
+            <button onclick="applyFilter('nashville')">ناشفيل</button>
+            <button onclick="applyFilter('stinson')">ستينسون</button>
+            <button onclick="applyFilter('brannan')">برانان</button>
+            <button onclick="applyFilter('earlybird')">ايرلي بيرد</button>
+        </div>
+        <button id="save" onclick="saveImage()">حفظ الصورة</button>
+    </div>
+    <script src="script.js"></script>
+</body><br>
+<p>إبن بدر للمطروشات</p>
+</html>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #231f24;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color:white;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+    color:white;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    width: 200px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    animation: borderAnimation 3s infinite;
+}
+
+input[type="file"]::placeholder {
+    color: white;
+    opacity: 1; /* لضمان ظهور النص */
+}
+
+@keyframes borderAnimation {
+    0% { border-color: #007BFF; }
+    50% { border-color: #28a745; }
+    100% { border-color: #007BFF; }
+}
+
+input[type="file"]:hover {
+    background-color: #0056b3;
+}
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#save {
+    background-color: #28a745;
+}
+
+#save:hover {
+    background-color: #218838;
+}
+p{
+color:white;
+font-size:20px;
+font-style:italic;
+font-weight:35px;
+}
+</style>
+<script>
+const image = document.getElementById('image');
+const upload = document.getElementById('upload');
+
+// تحميل الصورة من الجهاز
+upload.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            image.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// تطبيق الفلاتر
+function applyFilter(filter) {
+    switch (filter) {
+        case 'none':
+            image.style.filter = 'none';
+            break;
+        case 'grayscale':
+            image.style.filter = 'grayscale(100%)';
+            break;
+        case 'sepia':
+            image.style.filter = 'sepia(100%)';
+            break;
+        case 'blur':
+            image.style.filter = 'blur(5px)';
+            break;
+        case 'brightness':
+            image.style.filter = 'brightness(150%)';
+            break;
+        case 'contrast':
+            image.style.filter = 'contrast(200%)';
+            break;
+        case 'hue-rotate':
+            image.style.filter = 'hue-rotate(90deg)';
+            break;
+        case 'saturate':
+            image.style.filter = 'saturate(200%)';
+            break;
+        case 'invert':
+            image.style.filter = 'invert(100%)';
+            break;
+        case 'opacity':
+            image.style.filter = 'opacity(50%)';
+            break;
+        case 'drop-shadow':
+            image.style.filter = 'drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5))';
+            break;
+        case 'grayscale-brightness':
+            image.style.filter = 'grayscale(100%) brightness(150%)';
+            break;
+        case 'sepia-blur':
+            image.style.filter = 'sepia(100%) blur(5px)';
+            break;
+        case 'contrast-saturate':
+            image.style.filter = 'contrast(200%) saturate(200%)';
+            break;
+        case 'hue-rotate-blur':
+            image.style.filter = 'hue-rotate(90deg) blur(5px)';
+            break;
+        case 'invert-opacity':
+            image.style.filter = 'invert(100%) opacity(50%)';
+            break;
+        case 'sepia-invert':
+            image.style.filter = 'sepia(100%) invert(100%)';
+            break;
+        case 'brightness-contrast':
+            image.style.filter = 'brightness(150%) contrast(200%)';
+            break;
+        case 'saturate-blur':
+            image.style.filter = 'saturate(200%) blur(5px)';
+            break;
+        case 'hue-rotate-saturate':
+            image.style.filter = 'hue-rotate(90deg) saturate(200%)';
+            break;
+        // الفلاتر الجديدة
+        case 'vintage':
+            image.style.filter = 'sepia(50%) contrast(120%) brightness(90%)';
+            break;
+        case 'cool':
+            image.style.filter = 'brightness(110%) saturate(150%) hue-rotate(180deg)';
+            break;
+        case 'warm':
+            image.style.filter = 'brightness(110%) saturate(150%) hue-rotate(-30deg)';
+            break;
+        case 'clarendon':
+            image.style.filter = 'contrast(120%) saturate(125%)';
+            break;
+        case 'gingham':
+            image.style.filter = 'contrast(90%) brightness(110%)';
+            break;
+        case 'moon':
+            image.style.filter = 'grayscale(100%) contrast(110%) brightness(110%)';
+            break;
+        case 'lark':
+            image.style.filter = 'contrast(90%) saturate(120%)';
+            break;
+        case 'reyes':
+            image.style.filter = 'sepia(30%) contrast(110%) brightness(110%)';
+            break;
+        case 'juno':
+            image.style.filter = 'sepia(40%) contrast(120%) saturate(120%)';
+            break;
+        case 'slumber':
+            image.style.filter = 'brightness(90%) saturate(90%)';
+            break;
+        case 'aden':
+            image.style.filter = 'hue-rotate(-20deg) contrast(90%) saturate(85%) brightness(120%)';
+            break;
+        case 'perpetua':
+            image.style.filter = 'contrast(110%) brightness(110%)';
+            break;
+        case 'amaro':
+            image.style.filter = 'hue-rotate(-10deg) contrast(90%) brightness(110%) saturate(150%)';
+            break;
+        case 'mayfair':
+            image.style.filter = 'contrast(110%) saturate(110%)';
+            break;
+        case 'rise':
+            image.style.filter = 'sepia(30%) contrast(110%) brightness(110%)';
+            break;
+        case 'hudson':
+            image.style.filter = 'brightness(120%) contrast(90%) saturate(110%)';
+            break;
+        case 'valencia':
+            image.style.filter = 'sepia(20%) contrast(110%) brightness(110%)';
+            break;
+        case 'xpro2':
+            image.style.filter = 'sepia(30%) contrast(120%) brightness(110%)';
+            break;
+        case 'willow':
+            image.style.filter = 'grayscale(50%) contrast(90%) brightness(110%)';
+            break;
+        case 'lofi':
+            image.style.filter = 'contrast(150%) saturate(110%)';
+            break;
+        case 'inkwell':
+            image.style.filter = 'grayscale(100%) contrast(110%) brightness(90%)';
+            break;
+        case 'hefe':
+            image.style.filter = 'contrast(120%) saturate(120%) hue-rotate(-10deg)';
+            break;
+        case 'nashville':
+            image.style.filter = 'sepia(30%) contrast(120%) brightness(110%)';
+            break;
+        case 'stinson':
+            image.style.filter = 'contrast(90%) saturate(90%)';
+            break;
+        case 'brannan':
+            image.style.filter = 'sepia(40%) contrast(140%) brightness(90%)';
+            break;
+        case 'earlybird':
+            image.style.filter = 'sepia(30%) contrast(120%) brightness(110%)';
+            break;
+        default:
+            image.style.filter = 'none';
+    }
+}
+
+// حفظ الصورة بعد تطبيق الفلتر
+function saveImage() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+
+    // تطبيق الفلتر على Canvas
+    ctx.filter = image.style.filter;
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    // إنشاء رابط لتحميل الصورة
+    const link = document.createElement('a');
+    link.download = 'filtered-image.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
+</script>
